@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Play With Numbers
+{% endblock title %}
+
+{% block head %}
+  <script src='task1.js'></script>
+{% endblock head %}
+
+{% block body %}
+  <table>
+    <thead>
+      <th>Number</th>
+      <th>Root</th>
+    </thead>
+    <tbody>
+      {% for row in data %}
+        <tr>
+          <td>{{ row['number'] }}</td>
+          <td>{{ row.root }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock body %}
