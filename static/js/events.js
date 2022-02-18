@@ -1,10 +1,26 @@
-import { User } from "./extra.js";
+import { User, Observable, Observer } from "./extra.js";
 
 let flag = 0;
 
+const h1 = document.getElementById('h1text');
+const h2 = document.getElementById('h2text');
+const h3 = document.getElementById('h3text')
+
+const h1Observable = new Observable(h1);
+const h2Observer = new Observer(h2);
+const h3Observer = new Observer(h3);
+h1Observable.subscribe(h2Observer);
+h1Observable.subscribe(h3Observer);
+
 const OnClickEvent = () => document.getElementById('h3text').dispatchEvent(new Event('hello-world'));
-const cusOut = (ev) => ev.target.style = "color: black";
-const cusOver = (ev) => ev.target.style = "color: red;";
+const cusOut = (ev) => {
+  h1Observable.updateState("HoverOut");
+  ev.target.style = "color: black";
+};
+const cusOver = (ev) => {
+  h1Observable.updateState("Hover");
+  ev.target.style = "color: red;";
+};
 
 const cusOverEvent = new Event('mouseover', {bubbles: true, cancelable: true});
 
@@ -24,16 +40,17 @@ const OnOut = () => {
 const updateUsersTableEvent = new CustomEvent('update_users_table');
 
 
-var h1 = document.getElementById('h1text');
 h1.addEventListener('mouseover', cusOver);
 h1.addEventListener('mouseout', cusOut);
-h1.addEventListener('click', () => alert('You clicked Custom Buton!!!'));
+h1.addEventListener('click', () => {
+  alert('You clicked Custom Buton!!!');
+});
 
-var h2 = document.getElementById('h2text');
+
 h2.addEventListener('click', () => alert('You clicked Custom H2 Buton!!!'));
 h2.dispatchEvent(cusOverEvent);
 
-const h3 = document.getElementById('h3text')
+
 h3.addEventListener('hello-world', (event) => {event.target.innerHTML = "Hello World !!!!"});
 h3.dispatchEvent(cusHelloEvent);
 
@@ -54,10 +71,12 @@ document.getElementById('user_button').addEventListener('update_users_table', ()
   const users_data = User.users;
   if (users_data.length == 1) {
     const div = document.createElement('div');
+    div.className = 'container';
     const table = document.createElement('table');
     table.id = 'users_table';
     table.style = 'padding-top: 2%;'
-    table.innerHTML = `<thead>
+    table.className = 'table table-striped table-hover';
+    table.innerHTML = `<thead class="thead-dark">
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email Id</th>

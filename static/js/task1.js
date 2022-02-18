@@ -23,18 +23,15 @@ const userPrototype = {
 // h1.addEventListener('mouseover', cusOver);
 // h1.addEventListener('mouseout', cusOut);
 
+function calculate(num1) {
+  return function(num2) {
+    return num1 + num2;
+  }
+}
+
 (async function() {
   let res = await loadPromise();
   console.log(res, 'Done');
-
-
-
-
-  // const click_events = [arrange, arrange, search, resetDOM]
-  // click_elements.forEach((el, index) => {
-  //   el.addEventListener('click', click_events[index]());
-  // })
-
 
   const click_elements = Array.from(document.getElementsByClassName('clicks'));
   click_elements[0].addEventListener('click', arrange);
@@ -43,8 +40,6 @@ const userPrototype = {
   click_elements[1].asc = false;
   click_elements[2].addEventListener('click', search);
   click_elements[3].addEventListener('click', resetDOM);
-
-
 
   // Adding Some Map, Sort, Filter Functionalities
   // Get the Math Table Elemets
@@ -61,6 +56,8 @@ const userPrototype = {
     createRows(tableBody, rand, Math.sqrt(rand).toFixed(3));
   }
 
+  console.log('Value of Calculation: ',calculate(5)(10))
+
   // Changing Default Prototype for createUser
   // createUser.prototype = userPrototype;
   // createUser.prototype.constructor = createUser;
@@ -72,10 +69,13 @@ const userPrototype = {
 
 
 
-  const req = new RemoteCall({type: 'GET', url: 'https://reqres.in/api/products/3'});
-  console.log("Hello Waiting...");
-  const xmlHttp_response = await req.call;
-  console.log(xmlHttp_response);
+  // const req = new RemoteCall({type: 'GET', url: 'https://reqres.in/api/products/3'});
+  // console.log("Hello Waiting...");
+  // const xmlHttp_response = await req.call;
+  // console.log(xmlHttp_response);
+  // const xmlData = new RemoteCall({type: 'json', url: '/static/js/app/user_table.xml'})
+  // const data = await xmlData.call;
+  // console.log('xml:::',data);
 
   //xmlHttp.onload = () => {console.log('Done Waiting...',xmlHttp.responseText);}
 

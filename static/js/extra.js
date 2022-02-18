@@ -1,6 +1,6 @@
 export class RemoteCall {
   constructor(ob){
-    this.call_type = ob.type;
+    this.format = ob.type;
     this.url = ob.url
     this.result = null;
   }
@@ -8,10 +8,11 @@ export class RemoteCall {
   get call() {
     return new Promise((resolve) => {
       const xhttp = new XMLHttpRequest();
-      xhttp.open(this.call_type, this.url, true);
+      xhttp.open('GET', this.url, true);
       xhttp.onreadystatechange = () => {
         if(xhttp.readyState == 4 && xhttp.status == 200) {
-          resolve(xhttp.responseText);
+          if (this.format == 'xml') resolve(xhttp.responseXML)
+          else resolve(xhttp.responseText);
         }
       }
       xhttp.send();
@@ -68,3 +69,34 @@ export class User {
     return "name";
   }
 };
+
+
+export class Observer{
+  constructor(element) {
+    this.element = element;
+  }
+
+  call(state) {
+    this.element.innerHTML = "New State: " + state;
+  }
+}
+
+export class Observable {
+  constructor(target) {
+    this.target = target;
+    this.observers = [];
+  }
+
+  subscribe(observer) {
+    this.observers.push(observer);
+  }
+
+  updateState(state) {
+    this.state = state;
+    this.notify(state);
+  }
+
+  notify(state) {
+    this.observers.forEach((observer) => observer.call(state));
+  }
+}

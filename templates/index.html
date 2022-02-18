@@ -7,44 +7,61 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
   <script type="module" src="./../static/js/task1.js"></script>
+  <link rel="stylesheet" href="./../static/lib/Bootstrap-4.1.3/css/bootstrap.min.css">
 </head>
 <body>
-  <div>
-    <h1>This is ES6 Event Handlers</h1>
-    <button id="newBut" type="submit">Click Me</button><span id="demo" style="padding-left: 2%;"></span>
+  <div class="container-fluid">
+    <div>
+      <h1>This is ES6 Event Handlers</h1>
+      <button id="newBut" type="submit">Click Me</button><span id="demo" style="padding-left: 2%;"></span>
+    </div>
+    <div>
+      <h1><span id="h1text">Text</span></h1>
+    </div>
+    <div>
+      <h2 id="h2text">H2 Text</h2>
+    </div>
+    <div>
+      <h2 id="h3text">H3 Text</h2>
+    </div>
   </div>
-  <div>
-    <h1><span id="h1text">Text</span></h1>
+  <div class="container-fluid">
+    <div class="form-group">
+      <span><button type="submit" id="sort_asc" class="clicks btn btn-primary" >Ascending</button></span>
+      <span><button type="submit" id="sort_dec" class="clicks btn btn-primary" >Descending</button></span>
+    </div>
+    <div class="form-inline">
+      <div class="form-group mb-3 mx-sm-1">
+        <label for="search" class="mx-sm-1">Filter Results: </label>
+        <select name="search" id="search_column" class="custom-select" >
+          <option value="number" selected>Number</option>
+          <option value="root">Root</option>
+        </select>
+      </div>
+      <div class="form-group mb-3 mx-sm-1">
+        <select name="operator" id="search_operator" class="form-control">
+          <option value="=">=</option>
+          <option value="!=">!=</option>
+          <option value="<"><</option>
+          <option value=">">></option>
+          <option value="<="><=</option>
+          <option value=">=">>=</option>
+        </select>
+      </div>
+      <div class="form-group mb-3 mx-sm-1">
+        <span><input type="text" id="search_value" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="30" /> </span>
+      </div>
+      <div class="form-group mb-3 mx-sm-1">
+        <span><button type="submit" id="filter" class="clicks btn btn-success" >Search</button></span>
+      </div>
+      <div class="form-group mb-3 mx-sm-1">
+        <span><button type="reset" id="reset" class="clicks btn btn-danger" >Reset</button></span>
+      </div>
+    </div>
   </div>
-  <div>
-    <h2 id="h2text">H2 Text</h2>
-  </div>
-  <div>
-    <h2 id="h3text">H3 Text</h2>
-  </div>
-  <div>
-    <span><button type="submit" id="sort_asc" class="clicks" >Ascending</button></span>
-    <span><button type="submit" id="sort_dec" class="clicks" >Descending</button></span>
-    <label for="search">Filter Results: </label>
-    <select name="search" id="search_column" >
-      <option value="number" selected>Number</option>
-      <option value="root">Root</option>
-    </select>
-    <select name="operator" id="search_operator">
-      <option value="=">=</option>
-      <option value="!=">!=</option>
-      <option value="<"><</option>
-      <option value=">">></option>
-      <option value="<="><=</option>
-      <option value=">=">>=</option>
-    </select>
-    <span><input type="text" id="search_value" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="30" /> </span>
-    <span><button type="submit" id="filter" class="clicks" >Search</button></span>
-    <span><button type="reset" id="reset" class="clicks" >Reset</button></span>
-  </div>
-  <div>
-    <table id="mathTable">
-      <thead>
+  <div class="container-fluid">
+    <table id="mathTable" class="table table-striped table-hover table-responsive">
+      <thead class="thead-dark ">
         <th>Number</th>
         <th>Root</th>
       </thead>
@@ -56,9 +73,15 @@
   <div>
     <h3> Hello World</h3>
   </div>
-  <label for="newUser">Create User</label>
-  <input type="text" name="nuwUser" id="newuser"/>
-  <button type="submit" id="user_button">Create</button>
+  <div class="container-fluid form-inline">
+    <div class="form-group mb-3 mx-sm-1">
+      <label for="newUser" class="mx-sm-1">Create User:</label>
+      <input type="text" name="nuwUser" class="form-control" id="newuser"/>
+    </div>
+    <div class="form-group mb-3 mx-sm-1">
+      <button type="submit" id="user_button" class="btn btn-success">Create</button>
+    </div>
+  </div>
   <script src='./../static/js/events.js' type="module"></script>
 </body>
 </html>
