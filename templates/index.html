@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>ES6 Event Handlers</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+  <script type="module" src="./../static/js/task1.js"></script>
+</head>
+<body>
+  <div>
+    <h1>This is ES6 Event Handlers</h1>
+    <button id="newBut" type="submit">Click Me</button><span id="demo" style="padding-left: 2%;"></span>
+  </div>
+  <div>
+    <h1><span id="h1text">Text</span></h1>
+  </div>
+  <div>
+    <h2 id="h2text">H2 Text</h2>
+  </div>
+  <div>
+    <h2 id="h3text">H3 Text</h2>
+  </div>
+  <div>
+    <span><button type="submit" id="sort_asc" class="clicks" >Ascending</button></span>
+    <span><button type="submit" id="sort_dec" class="clicks" >Descending</button></span>
+    <label for="search">Filter Results: </label>
+    <select name="search" id="search_column" >
+      <option value="number" selected>Number</option>
+      <option value="root">Root</option>
+    </select>
+    <select name="operator" id="search_operator">
+      <option value="=">=</option>
+      <option value="!=">!=</option>
+      <option value="<"><</option>
+      <option value=">">></option>
+      <option value="<="><=</option>
+      <option value=">=">>=</option>
+    </select>
+    <span><input type="text" id="search_value" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="30" /> </span>
+    <span><button type="submit" id="filter" class="clicks" >Search</button></span>
+    <span><button type="reset" id="reset" class="clicks" >Reset</button></span>
+  </div>
+  <div>
+    <table id="mathTable">
+      <thead>
+        <th>Number</th>
+        <th>Root</th>
+      </thead>
+      <tbody>
+        <tr><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h3> Hello World</h3>
+  </div>
+  <label for="newUser">Create User</label>
+  <input type="text" name="nuwUser" id="newuser"/>
+  <button type="submit" id="user_button">Create</button>
+  <script src='./../static/js/events.js' type="module"></script>
+</body>
+</html>
