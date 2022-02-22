@@ -73,9 +73,9 @@ function calculate(num1) {
   // console.log("Hello Waiting...");
   // const xmlHttp_response = await req.call;
   // console.log(xmlHttp_response);
-  // const xmlData = new RemoteCall({type: 'json', url: '/static/js/app/user_table.xml'})
-  // const data = await xmlData.call;
-  // console.log('xml:::',data);
+  const xmlData = new RemoteCall({type: 'xml', url: '/static/js/app/user_table.xml'})
+  const data = await xmlData.call;
+  console.log('xml:::',data);
 
   //xmlHttp.onload = () => {console.log('Done Waiting...',xmlHttp.responseText);}
 

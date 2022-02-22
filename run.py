@@ -29,7 +29,8 @@ class NumbersApp(object):
     self.url_map = Map([
       Rule('/', endpoint='index'),
       Rule('/numbers', endpoint='numbers'),
-      Rule('/loadqweb', endpoint='loadQweb')
+      Rule('/loadqweb', endpoint='loadQweb'),
+      Rule('/todo', endpoint='todo')
     ])
 
 
@@ -142,6 +143,14 @@ class NumbersApp(object):
     # conn.close()
 
     return self.render_template('numbers.html', render_context = {'data': tableRows})
+
+
+  def todo(self, request):
+    file_path = os.path.join(os.path.dirname(__file__), 'static/js/app/todoApp/index.html')
+    file_data = None
+    with open(file_path, "rb") as fp:
+      file_data = fp.read()
+    return Response(file_data, content_type="text/html")
 
 
 def create_app():
